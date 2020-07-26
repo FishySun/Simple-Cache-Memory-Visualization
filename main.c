@@ -2,7 +2,7 @@
 /* The given program tries to simulate the cache and main memory workings simultaneously with verboseness */
 /* It is very basic and doesn't delve deep into the caching mechanisms or memory mechanisms or other advanced concepts*/
 /* We also don't take into a/c the multilevel cache that are available name L1, L2, L3...*/
-/* We use the FIFO or First in, First out cache replacement mechanism to illustrate */
+/* We use the LIFO cache replacement mechanism to illustrate */
 /* Tested with GCC 8.3.0 in Windows 10 Pro 64 bit with a RAM of 8 GB and a Intel core i3 7100 @3.9 GHZ processor */
 
 #include <stdio.h>
