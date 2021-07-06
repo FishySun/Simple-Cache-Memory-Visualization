@@ -34,19 +34,18 @@ void replace(data *arr,data *cache, int arr_index){   //Replace the FIFO block.
 }
 
 void output(data *word, data *cache){   //Output both the cache and main memory.
-    int block;
-    printf("\n     Cache Memory                Main Memory:\n ");
-    printf("\n\n     Value  Address             Value  Address\n\n");
+    printf("\n      Cache Memory                    Main Memory:\n ");
+    printf("\n\n    Value  Address                  Value  Address\n\n");
     int j=0;
     for(register int i=0;i<4 ;++i) {
         int count = 0;
         while (count < 4) {
             if (i < 3) {
-                printf("   %5d   %p           %5d   %p\n", (cache + j)->value, &((cache +j)->value), (word+j)->value, &(word->value));
+                printf("   %5d   %p         %5d   %p\n", (cache + j)->value, (void *) &((cache +j)->value), (word+j)->value, (void *) &(word->value));
                 ++j;
                 ++count;
             } else {
-                printf("                              %5d   %p\n", (word + j)->value, &(word->value));
+                printf("   %5d   %p\n", (word + j)->value, (void *) &(word->value));
                 ++j;
                 ++count;
             }
@@ -93,7 +92,7 @@ void search(data *arr,int key, data *cache)  //Search in the main memory for the
             search_i = true;
             sleep(4);
             printf("\n\n    Element found in main memory!!!!");
-            printf("\n      The element is at location : %p\n", &((arr + i)->value));
+            printf("\n      The element is at location : %p\n", (void *) &((arr + i)->value));
             printf("\n      Modifying the cache memory.......\n\n");
             printf("\n      Done!\n\n");
             printf("\n________________________________________________________________________");
@@ -130,7 +129,7 @@ void cache_search(data *cache, int key, data *word){   //Search in the cache mem
     else {
         sleep(1);
         printf("\n\n      HIT!! Element found in cache memory!");
-        printf("\n      The element is at location : %p\n", &((cache + i)->value));
+        printf("\n      The element is at location : %p\n", (void *) &((cache + i)->value));
     }
 }
 
