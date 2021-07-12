@@ -21,7 +21,7 @@ typedef struct Data {
 int j = 0;  //For storing the last index in cache.
 int k = 0;  //For storing the last index in main memory.
 
-void replace(data *arr,data *cache, int arr_index){   //Replace the FIFO block.
+void replace(data *arr,data *cache, int arr_index) {   //Replace the FIFO block.
     arr_index = sizeof(int)*arr_index - sizeof(int);
     for(register int i=0 ; i<sizeof(int);++i){
         (cache + j)->value = (arr + arr_index)->value;
@@ -33,15 +33,15 @@ void replace(data *arr,data *cache, int arr_index){   //Replace the FIFO block.
         j = 0;
 }
 
-void output(data *word, data *cache){   //Output both the cache and main memory.
-    printf("\n      Cache Memory                    Main Memory:\n ");
+void output(data *word, data *cache) {   //Output both the cache and main memory.
+    printf("\n      Main Memory                    Cache Memory:\n ");
     printf("\n\n    Value  Address                  Value  Address\n\n");
     int j=0;
     for(register int i=0;i<4 ;++i) {
         int count = 0;
         while (count < 4) {
             if (i < 3) {
-                printf("   %5d   %p         %5d   %p\n", (cache + j)->value, (void *) &((cache +j)->value), (word+j)->value, (void *) &(word->value));
+                printf("   %5d   %p         %5d   %p\n", (word + j)->value, (void *) &((word +j)->value), (cache+j)->value, (void *) &(cache->value));
                 ++j;
                 ++count;
             } else {
@@ -56,11 +56,11 @@ void output(data *word, data *cache){   //Output both the cache and main memory.
 
     printf("\n   (Main Memory printed upto 4 blocks......)");
 
-        printf("\n\n");
-    }
+    printf("\n\n");
+}
 
 
-void memory(data *word){    //To insert elements in the main memory.
+void memory(data *word) {    //To insert elements in the main memory.
     printf("\n________________________________________________________________________\n\n");
     printf("\n     Enter the no of elements that you want to enter:> ");
     int n;
@@ -82,8 +82,7 @@ void memory(data *word){    //To insert elements in the main memory.
     }
 }
 
-void search(data *arr,int key, data *cache)  //Search in the main memory for the key.
-{
+void search(data *arr,int key, data *cache) { //Search in the main memory for the key.
     bool search_i = false;
     for(int i=0;i<100;++i)
     {
@@ -107,7 +106,7 @@ void search(data *arr,int key, data *cache)  //Search in the main memory for the
 
 }
 
-void cache_search(data *cache, int key, data *word){   //Search in the cache memory for the key.
+void cache_search(data *cache, int key, data *word) {   //Search in the cache memory for the key.
     printf("\n\n------------------------------------------------------------\n");
     printf("    Enter the element you want to search for :> ");
     fscanf(stdin, "%d", &key);
@@ -134,7 +133,7 @@ void cache_search(data *cache, int key, data *word){   //Search in the cache mem
 }
 
 
-int main(void){
+int main(void) {
 
     data *arr = (data *) calloc(100, sizeof(data));
     data *cache = (data *) calloc(12, sizeof(data));
