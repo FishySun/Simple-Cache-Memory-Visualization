@@ -37,16 +37,16 @@ void replace(data *arr,data *cache, int arr_index) {   //How to replace the FIFO
 void output(data *word, data *cache) {   //Output both the cache and main memory.
     printf("\n      Main Memory                    Cache Memory:\n ");
     printf("\n\n    Value  Address                  Value  Address\n\n");
-    int j=0;
+    int j = 0;
     for (register int i=0; i<4; ++i) {
         int count = 0;
         while (count < 4) {
             if (i < 3) {
-                printf("   %5d   %p         %5d   %p\n", (word + j)->value, (void *) &((word +j)->value), (cache+j)->value, (void *) &(cache->value));
+                printf("   %5d   %p         %5d   %p\n", (word + j)->value, (void *) &((word +j)->value), (cache+j)->value, (void *) &((cache+j)->value));
                 ++j;
                 ++count;
             } else {
-                printf("   %5d   %p\n", (word + j)->value, (void *) &(word->value));
+                printf("   %5d   %p\n", (word + j)->value, (void *) &((word+j)->value));
                 ++j;
                 ++count;
             }
